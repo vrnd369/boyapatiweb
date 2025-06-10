@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../context/CartContext";
@@ -11,7 +11,7 @@ const CategoryProducts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchCategoryProducts = async () => {
+  const fetchCategoryProducts = useCallback(async () => {
     try {
       // TODO: Replace with actual API call
       const mockProducts = {
@@ -136,7 +136,7 @@ const CategoryProducts = () => {
       setError("Failed to load products. Please try again later.");
       setLoading(false);
     }
-  };
+  }, [category]);
 
   useEffect(() => {
     fetchCategoryProducts();
