@@ -140,7 +140,7 @@ const CategoryProducts = () => {
 
   useEffect(() => {
     fetchCategoryProducts();
-  }, [category]);
+  }, [category, fetchCategoryProducts]);
 
   const getCategoryTitle = (category) => {
     const titles = {
